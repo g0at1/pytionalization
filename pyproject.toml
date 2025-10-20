@@ -16,3 +16,7 @@ dependencies = []
 [project.urls]
 Homepage = "https://github.com/g0at1/pytionalization"
 Issues = "https://github.com/g0at1/pytionalization/issues"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

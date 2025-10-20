@@ -1,0 +1,6 @@
+{
+  "hello": "Hello",
+  "greet": "Hello, {{user.name}}!",
+  "nested": { "title": "Title: {{post.title}}" },
+  "missing_var": "Missing {{does.not.exist}}"
+}
