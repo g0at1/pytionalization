@@ -34,7 +34,14 @@ class I18n:
     def get_locale(self) -> str:
         return self._locale
 
-    def t(self, key: str, *, locale: Optional[str] = None, default: Optional[str] = None, **vars: Any) -> str:
+    def t(
+        self,
+        key: str,
+        *,
+        locale: Optional[str] = None,
+        default: Optional[str] = None,
+        **vars: Any,
+    ) -> str:
         """Translate a key using the active or provided locale.
 
         Args:
@@ -48,7 +55,9 @@ class I18n:
         if text is None and self.fallback_locale and self.fallback_locale != loc:
             text = self._lookup(self.fallback_locale, key)
         if text is None:
-            text = default if default is not None else key  # return key as a last resort
+            text = (
+                default if default is not None else key
+            )  # return key as a last resort
         if not isinstance(text, str):
             text = json.dumps(text, ensure_ascii=False)
         return self._interpolate(text, vars)
@@ -66,7 +75,7 @@ class I18n:
         node: Any = self._bundles.get(locale)
         if node is None:
             return None
-        for part in key.split('.'):
+        for part in key.split("."):
             if not isinstance(node, dict) or part not in node:
                 return None
             node = node[part]
@@ -88,17 +97,24 @@ class I18n:
     @staticmethod
     def _get_by_path(mapping: Mapping[str, Any], path: str) -> Optional[Any]:
         cur: Any = mapping
-        for part in path.split('.'):
+        for part in path.split("."):
             if isinstance(cur, Mapping) and part in cur:
                 cur = cur[part]
             else:
                 return None
         return cur
 
+
 _default_i18n: Optional[I18n] = None
 
 
-def configure_i18n(*, pl_path: str, en_path: str, default_locale: str = "pl", fallback_locale: str = "en") -> None:
+def configure_i18n(
+    *,
+    pl_path: str,
+    en_path: str,
+    default_locale: str = "pl",
+    fallback_locale: str = "en",
+) -> None:
     """Configure a process-wide i18n instance.
 
     Example:
@@ -112,8 +128,16 @@ def configure_i18n(*, pl_path: str, en_path: str, default_locale: str = "pl", fa
     )
 
 
-def translate(key: str, *, locale: Optional[str] = None, default: Optional[str] = None, **vars: Any) -> str:
+def translate(
+    key: str,
+    *,
+    locale: Optional[str] = None,
+    default: Optional[str] = None,
+    **vars: Any,
+) -> str:
     """Translate using the global instance configured via configure_i18n()."""
     if _default_i18n is None:
-        raise RuntimeError("i18n is not configured. Call configure_i18n(pl_path=..., en_path=...) first.")
+        raise RuntimeError(
+            "i18n is not configured. Call configure_i18n(pl_path=..., en_path=...) first."
+        )
     return _default_i18n.t(key, locale=locale, default=default, **vars)
