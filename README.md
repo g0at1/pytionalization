@@ -1,4 +1,4 @@
-# Lightweight i18n
+# Pytionalization
 
 A minimal JSON-based internationalization (i18n) helper for Python.
 
@@ -8,22 +8,16 @@ Supports nested keys, dot-notation access, placeholder interpolation, and automa
 
 ## 🚀 Installation
 
-### From GitHub
+### Using pip install
 ```bash
-pip install git+https://github.com/rafalkucharz/lightweight-i18n.git
+pip install git+https://github.com/g0at1/pytionalization.git 
 ```
-
-### From local path
-```bash
-pip install -e ./lightweight-i18n
-```
-
 ---
 
 ## 🧩 Usage
 
 ```python
-from lightweight_i18n import I18n, configure_i18n, translate
+from pytionalization import I18n, configure_i18n, translate
 
 # Option 1: Create instance manually
 i18n = I18n(
