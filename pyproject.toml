@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytionalization"
+version = "0.0.1"
+description = "Lightweight i18n utilities (PL/EN) with dot-path lookup and interpolation"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "g0at1" }]
+keywords = ["i18n", "internationalization", "translations"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/g0at1/pytionalization"
+Issues = "https://github.com/g0at1/pytionalization/issues"
