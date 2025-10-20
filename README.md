@@ -44,6 +44,11 @@ translate('HEADER.USER.LOGOUT', locale='pl')
 
 ---
 
+## Examples
+```bash
+python examples/basic.py 
+```
+
 ## 🧠 Features
 
 ✅ Loads from `pl.json` and `en.json` (or any mapping)
